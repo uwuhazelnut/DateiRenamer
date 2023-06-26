@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace DateiRenamer
 {
@@ -227,6 +220,118 @@ namespace DateiRenamer
         {
             // Use regular expression to check if the filename contains a block of digits
             return Regex.IsMatch(fileName, @"\d+");
+        }
+
+        public static void editDigits(string directoryPath)
+        {
+            Console.WriteLine("Was soll mit den Zahlen passieren?");
+            Console.WriteLine("[0]: Zahlenblöcke einfügen/ersetzen (nach Erstellungsdatum sortiert), [1]: Zahlenblöcke löschen, [2]: Führende Nullen einführen");
+
+            int userOption = getUserOption(2);
+
+            editDigitsProcessor(directoryPath, userOption, true);
+        }
+
+        private static void editDigitsProcessor(string directoryPath, int userOption, bool isFirstIteration)
+        {
+            string[] files = Directory.GetFiles(directoryPath);
+
+            switch (userOption)
+            {
+                case 0:
+                    //Sort the files depending on file creation time in ascending order (a lambda expression is used to properly sort the elements): 
+                    Array.Sort(files, (a, b) => File.GetCreationTime(a).CompareTo(File.GetCreationTime(b)));
+
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        string filePath = files[i];
+                        string fileName = Path.GetFileNameWithoutExtension(filePath);
+                        string fileExtension = Path.GetExtension(filePath);
+
+                        // Remove digit block from file name if it contains a digit block:
+                        if (containsDigitBlock(fileName))
+                        {
+                            Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+                            string digitBlock = digitBlockMatch.Value;
+                            fileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length);
+                        }
+
+                        string newFileName = $"{fileName}{i + 1}"; // Adding the digit to each file name
+                        string newPath = Path.Combine(directoryPath, newFileName + fileExtension);
+                        File.Move(filePath, newPath);
+                    }
+                    break;
+                case 1:
+                    foreach (string filePath in files)
+                    {
+                        string fileName = Path.GetFileName(filePath);
+
+                        if (containsDigitBlock(fileName))
+                        {
+                            Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+                            string digitBlock = digitBlockMatch.Value;
+                            string newFileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length);
+                            string newPath = Path.Combine(directoryPath, newFileName);
+
+                            // Check if removing the digit block caused a conflict with already existing file names:
+                            if (!File.Exists(newPath))
+                            {
+                                File.Move(filePath, newPath);
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Datei {filePath} wurde übersprungen, da Konflikt mit bereits vorhandener Datei besteht.");
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    int longestDigitBlockLength = 0;
+
+                    foreach (string filePath in files)
+                    {
+                        string fileName = Path.GetFileName(filePath);
+
+                        if (containsDigitBlock(fileName))
+                        {
+                            Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+
+                            // Get the length of the largest digit block by comparing each digit block to the current largest block:
+                            longestDigitBlockLength = Math.Max(digitBlockMatch.Value.Length, longestDigitBlockLength);
+
+                            // Create new digit block with leading zeros and replace old digit block:
+                            string paddedDigitBlock = digitBlockMatch.Value.PadLeft(longestDigitBlockLength, '0');
+                            string newFileName = fileName.Replace(digitBlockMatch.Value, paddedDigitBlock);
+
+                            string newPath = Path.Combine(directoryPath, newFileName);
+                            File.Move(filePath, newPath);
+                        }
+                    }
+                    break;
+            }
+
+            string[] subDirectoryPaths = Directory.GetDirectories(directoryPath);
+            foreach (string subDirectory in subDirectoryPaths)
+            {
+                editDigitsProcessor(subDirectory, userOption, false);
+            }
+
+            // The following code prevents the recursive sub-directory processing from outputting the same finishing text multiple times:
+            if (isFirstIteration)
+            {
+                switch (userOption)
+                {
+                    case 0:
+                        Console.WriteLine("Zahlenblöcke eingefügt (bereits vorhandene Zahlenblöcke wurden ersetzt)");
+                        break;
+                    case 1:
+                        Console.WriteLine("Zahlenblöcke gelöscht.");
+                        break;
+                    case 2:
+                        Console.WriteLine("Führende Nullen hinzugefügt (alle Zahlenblöcke wurden an den größten Zahlenblock angepasst).");
+                        break;
+                }
+            }
         }
     }
 }
