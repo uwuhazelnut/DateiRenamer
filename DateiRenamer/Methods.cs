@@ -252,7 +252,6 @@ namespace DateiRenamer
                         if (containsDigitBlock(fileName))
                         {
                             Match digitBlockMatch = Regex.Match(fileName, @"\d+");
-                            string digitBlock = digitBlockMatch.Value;
                             fileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length);
                         }
 
@@ -269,7 +268,6 @@ namespace DateiRenamer
                         if (containsDigitBlock(fileName))
                         {
                             Match digitBlockMatch = Regex.Match(fileName, @"\d+");
-                            string digitBlock = digitBlockMatch.Value;
                             string newFileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length);
                             string newPath = Path.Combine(directoryPath, newFileName);
 
