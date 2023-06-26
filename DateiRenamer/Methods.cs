@@ -14,24 +14,18 @@ namespace DateiRenamer
         public static int getUserOption(int optionAmount)
         {
             int option; // The option chosen by the user is stored in the option variable
-            bool optionCheck = int.TryParse(Console.ReadLine(), out option); // TryParse returns a false boolean if the user enters invalid input which makes error handling easier
 
-            // Set the check boolean to false if the user enters an option that doesn't exist:
-            if (option > optionAmount || option < 0)
+            // Repeat user input request until valid input has been entered:
+            while (true)
             {
-                optionCheck = false;
-            }
+                bool optionCheck = int.TryParse(Console.ReadLine(), out option); // TryParse returns a false boolean if the user enters invalid input which makes error handling easier
 
-            // Get new user input if previous input was invalid:
-            while (optionCheck == false)
-            {
-                Console.WriteLine("Ungültige Option, nochmal versuchen:");
-                optionCheck = int.TryParse(Console.ReadLine(), out option);
-
-                if (option > optionAmount || option < 0)
+                if (option >= 0 && option <= optionAmount && optionCheck)
                 {
-                    optionCheck = false;
+                    break;
                 }
+
+                Console.WriteLine("Ungültige Option, nochmal versuchen:");
             }
 
             return option;
@@ -202,28 +196,23 @@ namespace DateiRenamer
 
                 if (containsDigitBlock(fileName))
                 {
+                    // Use regular expression to find the digit block:
+                    Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+                    string digitBlock = digitBlockMatch.Value;
+                    string remainingFileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length); // Removes the digit block from the file name using the Regex match information
+                    string newFileName = string.Empty; // An empty string is necessary to remove a compiler error when creating the new file path later on
+
                     if (userOption == 0)
                     {
-                        // Use regular expression to find the digit block and move it to the beginning:
-                        Match digitBlockMatch = Regex.Match(fileName, @"\d+");
-                        string digitBlock = digitBlockMatch.Value;
-                        string remainingFileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length); // Removes the digit block from the file name using the Regex match information
-                        string newFileName = digitBlock + remainingFileName;
-
-                        string newPath = Path.Combine(directory.FullName, newFileName + fileExtension); // Reattach file extension to the file name
-                        file.MoveTo(newPath);
+                        newFileName = digitBlock + remainingFileName; // Move digit block to beginning
                     }
                     else if (userOption == 1)
                     {
-                        //Move digit block to end: 
-                        Match digitBlockMatch = Regex.Match(fileName, @"\d+");
-                        string digitBlock = digitBlockMatch.Value;
-                        string remainingFileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length);
-                        string newFileName = remainingFileName + digitBlock;
-
-                        string newPath = Path.Combine(directory.FullName, newFileName + fileExtension);
-                        file.MoveTo(newPath);
+                        newFileName = remainingFileName + digitBlock; //Move digit block to end
                     }
+
+                    string newPath = Path.Combine(directory.FullName, newFileName + fileExtension); // Reattach file extension to the file name
+                    file.MoveTo(newPath);
                 }
             }
 
