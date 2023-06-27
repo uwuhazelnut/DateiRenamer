@@ -31,11 +31,15 @@
             filesListBox = new ListBox();
             addFileToListBtn = new Button();
             button1 = new Button();
+            folderBrowserDialog = new FolderBrowserDialog();
+            fileDialogBtn = new Button();
+            folderPathTxt = new TextBox();
             SuspendLayout();
             // 
             // filesListBox
             // 
             filesListBox.FormattingEnabled = true;
+            filesListBox.HorizontalScrollbar = true;
             filesListBox.ItemHeight = 25;
             filesListBox.Items.AddRange(new object[] { "test1", "test2", "test3", "test4", "test", "", "test", "test", "test", "test", "test", "test", "zzz" });
             filesListBox.Location = new Point(12, 12);
@@ -46,7 +50,7 @@
             // 
             // addFileToListBtn
             // 
-            addFileToListBtn.Location = new Point(307, 12);
+            addFileToListBtn.Location = new Point(307, 96);
             addFileToListBtn.Name = "addFileToListBtn";
             addFileToListBtn.Size = new Size(134, 38);
             addFileToListBtn.TabIndex = 2;
@@ -56,7 +60,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(307, 56);
+            button1.Location = new Point(307, 140);
             button1.Name = "button1";
             button1.Size = new Size(134, 38);
             button1.TabIndex = 3;
@@ -64,17 +68,38 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // fileDialogBtn
+            // 
+            fileDialogBtn.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            fileDialogBtn.Location = new Point(684, 37);
+            fileDialogBtn.Name = "fileDialogBtn";
+            fileDialogBtn.Size = new Size(32, 32);
+            fileDialogBtn.TabIndex = 4;
+            fileDialogBtn.Text = "…";
+            fileDialogBtn.UseVisualStyleBackColor = true;
+            fileDialogBtn.Click += fileDialogBtn_Click;
+            // 
+            // folderPathTxt
+            // 
+            folderPathTxt.Location = new Point(307, 38);
+            folderPathTxt.Name = "folderPathTxt";
+            folderPathTxt.Size = new Size(371, 31);
+            folderPathTxt.TabIndex = 5;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(folderPathTxt);
+            Controls.Add(fileDialogBtn);
             Controls.Add(button1);
             Controls.Add(addFileToListBtn);
             Controls.Add(filesListBox);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -82,5 +107,8 @@
         private ListBox filesListBox;
         private Button addFileToListBtn;
         private Button button1;
+        private FolderBrowserDialog folderBrowserDialog;
+        private Button fileDialogBtn;
+        private TextBox folderPathTxt;
     }
 }
