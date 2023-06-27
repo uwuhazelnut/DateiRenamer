@@ -229,10 +229,23 @@ namespace DateiRenamer
 
             int userOption = getUserOption(2);
 
-            editDigitsProcessor(directoryPath, userOption, true);
+            editDigitsProcessor(directoryPath, userOption);
+
+            switch (userOption)
+            {
+                case 0:
+                    Console.WriteLine("Zahlenblöcke eingefügt (bereits vorhandene Zahlenblöcke wurden ersetzt)");
+                    break;
+                case 1:
+                    Console.WriteLine("Zahlenblöcke gelöscht.");
+                    break;
+                case 2:
+                    Console.WriteLine("Führende Nullen hinzugefügt (alle Zahlenblöcke wurden an den größten Zahlenblock angepasst).");
+                    break;
+            }
         }
 
-        private static void editDigitsProcessor(string directoryPath, int userOption, bool isFirstIteration)
+        private static void editDigitsProcessor(string directoryPath, int userOption)
         {
             string[] files = Directory.GetFiles(directoryPath);
 
@@ -311,24 +324,7 @@ namespace DateiRenamer
             string[] subDirectoryPaths = Directory.GetDirectories(directoryPath);
             foreach (string subDirectory in subDirectoryPaths)
             {
-                editDigitsProcessor(subDirectory, userOption, false);
-            }
-
-            // The following code prevents the recursive sub-directory processing from outputting the same finishing text multiple times:
-            if (isFirstIteration)
-            {
-                switch (userOption)
-                {
-                    case 0:
-                        Console.WriteLine("Zahlenblöcke eingefügt (bereits vorhandene Zahlenblöcke wurden ersetzt)");
-                        break;
-                    case 1:
-                        Console.WriteLine("Zahlenblöcke gelöscht.");
-                        break;
-                    case 2:
-                        Console.WriteLine("Führende Nullen hinzugefügt (alle Zahlenblöcke wurden an den größten Zahlenblock angepasst).");
-                        break;
-                }
+                editDigitsProcessor(subDirectory, userOption);
             }
         }
     }
