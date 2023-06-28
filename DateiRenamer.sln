@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateiRenamer", "DateiRenamer\DateiRenamer.csproj", "{3C50A850-86C4-4AD8-82D0-C7819B75BA83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateiRenamerWinForm", "DateiRenamerWinForm\DateiRenamerWinForm.csproj", "{DF602C0F-5C11-40BD-8417-84A1D2CDE96F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateiRenamerWinForm", "DateiRenamerWinForm\DateiRenamerWinForm.csproj", "{DF602C0F-5C11-40BD-8417-84A1D2CDE96F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
