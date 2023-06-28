@@ -7,9 +7,9 @@
             string path = Methods.getDirectory();
 
             Console.WriteLine("Auswählen, was mit den Dateien passieren soll:");
-            Console.WriteLine("[0]: Präfix ändern, [1]: Suffix ändern, [2]: Zahlenblöcke verschieben, [3]: Zahlen anpassen");
+            Console.WriteLine("[0]: Präfix ändern, [1]: Suffix ändern, [2]: Musternamen erstellen, [3]: Zahlenblöcke verschieben, [4]: Zahlen anpassen");
 
-            int userOption = Methods.getUserOption(3);
+            int userOption = Methods.getUserOption(4);
 
             // Process chosen option:
             switch (userOption)
@@ -21,9 +21,12 @@
                     Methods.changeSuffix(path);
                     break;
                 case 2:
-                    Methods.moveDigits(path);
+                    Methods.createNamePattern(path);
                     break;
                 case 3:
+                    Methods.moveDigits(path);
+                    break;
+                case 4:
                     Methods.editDigits(path);
                     break;
             }

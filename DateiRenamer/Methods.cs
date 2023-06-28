@@ -327,5 +327,44 @@ namespace DateiRenamer
                 editDigitsProcessor(subDirectory, userOption);
             }
         }
+
+        public static void createNamePattern(string directoryPath)
+        {
+            Console.WriteLine("Muster eingeben, das für alle Dateien verwendet werden soll (alle Dateinamen werden mit diesem Muster ersetzt):");
+            Console.WriteLine("Beispiel: 'file-' führt zum Muster 'file-1', 'file-2', ...");
+            string userPattern = Console.ReadLine()!;
+
+            if (!string.IsNullOrWhiteSpace(userPattern))
+            {
+                namePatternProcessor(directoryPath, userPattern);
+                Console.WriteLine("Dateien umbenannt");
+            }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe");
+            }
+        }
+
+        private static void namePatternProcessor(string directoryPath, string userPattern)
+        {
+            string[] filePaths = Directory.GetFiles(directoryPath);
+            Array.Sort(filePaths, (a, b) => File.GetCreationTime(a).CompareTo(File.GetCreationTime(b)));
+
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                string filePath = filePaths[i];
+                string fileExtension = Path.GetExtension(filePath);
+
+                string newFileName = $"{userPattern}{i + 1}";
+                string newPath = Path.Combine(directoryPath, newFileName + fileExtension);
+                File.Move(filePath, newPath);
+            }
+
+            string[] subdirectoryPaths = Directory.GetDirectories(directoryPath);
+            foreach (string subDirectory in subdirectoryPaths)
+            {
+                namePatternProcessor(subDirectory, userPattern);
+            }
+        }
     }
 }
