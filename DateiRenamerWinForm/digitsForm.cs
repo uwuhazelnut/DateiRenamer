@@ -17,7 +17,7 @@ namespace DateiRenamerWinForm
             InitializeComponent();
         }
 
-        public string userAction
+        public string? userAction
         {
             get; // makes the property read-only for public use
             private set; // makes the property writable within this class (private)
@@ -25,7 +25,7 @@ namespace DateiRenamerWinForm
 
         public int userOption
         {
-            get; 
+            get;
             private set;
         }
 

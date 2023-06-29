@@ -239,5 +239,47 @@ namespace DateiRenamerWinForm
             // Use regular expression to check if the filename contains a block of digits
             return Regex.IsMatch(fileName, @"\d+");
         }
+
+        private void namePatternBtn_Click(object sender, EventArgs e)
+        {
+            namePatternForm namePatternForm = new namePatternForm();
+            if (namePatternForm.ShowDialog() == DialogResult.OK)
+            {
+                string userPattern = namePatternForm.userPattern;
+
+                try
+                {
+                    string directoryPath = folderPathTxt.Text;
+                    namePatternProcessor(directoryPath, userPattern);
+                    populateListBox(directoryPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void namePatternProcessor(string directoryPath, string userPattern)
+        {
+            string[] filePaths = Directory.GetFiles(directoryPath);
+            Array.Sort(filePaths, (a, b) => File.GetCreationTime(a).CompareTo(File.GetCreationTime(b)));
+
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                string filePath = filePaths[i];
+                string fileExtension = Path.GetExtension(filePath);
+
+                string newFileName = $"{userPattern}{i + 1}";
+                string newPath = Path.Combine(directoryPath, newFileName + fileExtension);
+                File.Move(filePath, newPath);
+            }
+
+            string[] subdirectoryPaths = Directory.GetDirectories(directoryPath);
+            foreach (string subDirectory in subdirectoryPaths)
+            {
+                namePatternProcessor(subDirectory, userPattern);
+            }
+        }
     }
 }

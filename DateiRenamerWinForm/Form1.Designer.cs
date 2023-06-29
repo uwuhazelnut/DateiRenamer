@@ -37,6 +37,7 @@
             filesListBoxLbl = new Label();
             changeSuffixBtn = new Button();
             changeDigitsBtn = new Button();
+            namePatternBtn = new Button();
             SuspendLayout();
             // 
             // filesListBox
@@ -86,7 +87,7 @@
             // 
             changePrefixBtn.Location = new Point(605, 77);
             changePrefixBtn.Name = "changePrefixBtn";
-            changePrefixBtn.Size = new Size(134, 38);
+            changePrefixBtn.Size = new Size(209, 38);
             changePrefixBtn.TabIndex = 7;
             changePrefixBtn.Text = "Präfix ändern";
             changePrefixBtn.UseVisualStyleBackColor = true;
@@ -105,7 +106,7 @@
             // 
             changeSuffixBtn.Location = new Point(605, 121);
             changeSuffixBtn.Name = "changeSuffixBtn";
-            changeSuffixBtn.Size = new Size(134, 38);
+            changeSuffixBtn.Size = new Size(209, 38);
             changeSuffixBtn.TabIndex = 9;
             changeSuffixBtn.Text = "Suffix ändern";
             changeSuffixBtn.UseVisualStyleBackColor = true;
@@ -115,17 +116,28 @@
             // 
             changeDigitsBtn.Location = new Point(605, 165);
             changeDigitsBtn.Name = "changeDigitsBtn";
-            changeDigitsBtn.Size = new Size(134, 38);
+            changeDigitsBtn.Size = new Size(209, 38);
             changeDigitsBtn.TabIndex = 10;
             changeDigitsBtn.Text = "Zahlen ändern";
             changeDigitsBtn.UseVisualStyleBackColor = true;
             changeDigitsBtn.Click += changeDigitsBtn_Click;
+            // 
+            // namePatternBtn
+            // 
+            namePatternBtn.Location = new Point(605, 209);
+            namePatternBtn.Name = "namePatternBtn";
+            namePatternBtn.Size = new Size(209, 38);
+            namePatternBtn.TabIndex = 11;
+            namePatternBtn.Text = "Musternamen erstellen";
+            namePatternBtn.UseVisualStyleBackColor = true;
+            namePatternBtn.Click += namePatternBtn_Click;
             // 
             // dateiRenamerForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1422, 841);
+            Controls.Add(namePatternBtn);
             Controls.Add(changeDigitsBtn);
             Controls.Add(changeSuffixBtn);
             Controls.Add(filesListBoxLbl);
@@ -151,5 +163,6 @@
         private Label filesListBoxLbl;
         private Button changeSuffixBtn;
         private Button changeDigitsBtn;
+        private Button namePatternBtn;
     }
 }
