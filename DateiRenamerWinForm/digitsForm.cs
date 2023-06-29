@@ -19,14 +19,14 @@ namespace DateiRenamerWinForm
 
         public string userAction
         {
-            get;
-            private set;
+            get; // makes the property read-only for public use
+            private set; // makes the property writable within this class (private)
         }
 
         public int userOption
         {
-            get; // makes the property read-only for public use
-            private set; // makes the property writable within this class (private)
+            get; 
+            private set;
         }
 
         private void moveDigitsStartBtn_Click(object sender, EventArgs e)
