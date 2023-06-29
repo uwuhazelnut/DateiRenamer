@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             filesListBox = new ListBox();
-            addFileToListBtn = new Button();
-            button1 = new Button();
             folderBrowserDialog = new FolderBrowserDialog();
             fileDialogBtn = new Button();
             folderPathTxt = new TextBox();
@@ -51,26 +49,6 @@
             filesListBox.Size = new Size(544, 779);
             filesListBox.TabIndex = 1;
             filesListBox.SelectedIndexChanged += filesListBox_SelectedIndexChanged;
-            // 
-            // addFileToListBtn
-            // 
-            addFileToListBtn.Location = new Point(605, 98);
-            addFileToListBtn.Name = "addFileToListBtn";
-            addFileToListBtn.Size = new Size(134, 38);
-            addFileToListBtn.TabIndex = 2;
-            addFileToListBtn.Text = "Add";
-            addFileToListBtn.UseVisualStyleBackColor = true;
-            addFileToListBtn.Click += addFileToListBtn_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(605, 142);
-            button1.Name = "button1";
-            button1.Size = new Size(134, 38);
-            button1.TabIndex = 3;
-            button1.Text = "Clear";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // folderBrowserDialog
             // 
@@ -106,7 +84,7 @@
             // 
             // changePrefixBtn
             // 
-            changePrefixBtn.Location = new Point(863, 98);
+            changePrefixBtn.Location = new Point(605, 77);
             changePrefixBtn.Name = "changePrefixBtn";
             changePrefixBtn.Size = new Size(134, 38);
             changePrefixBtn.TabIndex = 7;
@@ -125,7 +103,7 @@
             // 
             // changeSuffixBtn
             // 
-            changeSuffixBtn.Location = new Point(863, 142);
+            changeSuffixBtn.Location = new Point(605, 121);
             changeSuffixBtn.Name = "changeSuffixBtn";
             changeSuffixBtn.Size = new Size(134, 38);
             changeSuffixBtn.TabIndex = 9;
@@ -135,7 +113,7 @@
             // 
             // changeDigitsBtn
             // 
-            changeDigitsBtn.Location = new Point(863, 186);
+            changeDigitsBtn.Location = new Point(605, 165);
             changeDigitsBtn.Name = "changeDigitsBtn";
             changeDigitsBtn.Size = new Size(134, 38);
             changeDigitsBtn.TabIndex = 10;
@@ -155,8 +133,6 @@
             Controls.Add(filePathLbl);
             Controls.Add(folderPathTxt);
             Controls.Add(fileDialogBtn);
-            Controls.Add(button1);
-            Controls.Add(addFileToListBtn);
             Controls.Add(filesListBox);
             Name = "dateiRenamerForm";
             Text = "DateiRenamer";
@@ -167,8 +143,6 @@
         #endregion
 
         private ListBox filesListBox;
-        private Button addFileToListBtn;
-        private Button button1;
         private FolderBrowserDialog folderBrowserDialog;
         private Button fileDialogBtn;
         private TextBox folderPathTxt;

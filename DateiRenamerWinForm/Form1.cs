@@ -15,16 +15,6 @@ namespace DateiRenamerWinForm
 
         }
 
-        private void addFileToListBtn_Click(object sender, EventArgs e)
-        {
-            filesListBox.Items.Add("NEW ITEM");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            filesListBox.Items.Clear();
-        }
-
         private void fileDialogBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = folderBrowserDialog.ShowDialog();
