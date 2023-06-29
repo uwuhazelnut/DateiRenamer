@@ -37,6 +37,7 @@
             filePathLbl = new Label();
             changePrefixBtn = new Button();
             filesListBoxLbl = new Label();
+            changeSuffixBtn = new Button();
             SuspendLayout();
             // 
             // filesListBox
@@ -121,11 +122,22 @@
             filesListBoxLbl.TabIndex = 8;
             filesListBoxLbl.Text = "Dateien:";
             // 
+            // changeSuffixBtn
+            // 
+            changeSuffixBtn.Location = new Point(863, 142);
+            changeSuffixBtn.Name = "changeSuffixBtn";
+            changeSuffixBtn.Size = new Size(134, 38);
+            changeSuffixBtn.TabIndex = 9;
+            changeSuffixBtn.Text = "Suffix ändern";
+            changeSuffixBtn.UseVisualStyleBackColor = true;
+            changeSuffixBtn.Click += changeSuffixBtn_Click;
+            // 
             // dateiRenamerForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1422, 841);
+            Controls.Add(changeSuffixBtn);
             Controls.Add(filesListBoxLbl);
             Controls.Add(changePrefixBtn);
             Controls.Add(filePathLbl);
@@ -151,5 +163,6 @@
         private Label filePathLbl;
         private Button changePrefixBtn;
         private Label filesListBoxLbl;
+        private Button changeSuffixBtn;
     }
 }

@@ -132,5 +132,58 @@ namespace DateiRenamerWinForm
                 prefixProcessor(subDirectory, oldPrefix, newPrefix);
             }
         }
+
+        private void changeSuffixBtn_Click(object sender, EventArgs e)
+        {
+            suffixForm suffixForm = new suffixForm();
+            if (suffixForm.ShowDialog() == DialogResult.OK)
+            {
+                string oldSuffix = suffixForm.oldSuffix;
+                string newSuffix = suffixForm.newSuffix;
+
+                try
+                {
+                    string directoryPath = folderPathTxt.Text;
+                    suffixProcessor(new DirectoryInfo(directoryPath), oldSuffix, newSuffix);
+                    populateListBox(directoryPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void suffixProcessor(DirectoryInfo directory, string oldSuffix, string newSuffix)
+        {
+            FileInfo[] files = directory.GetFiles();
+
+            foreach (FileInfo file in files)
+            {
+                string oldFileName = Path.GetFileNameWithoutExtension(file.FullName);
+                string fileExtension = file.Extension;
+                string newFileName;
+                oldFileName = oldFileName.Trim();
+
+                if (!string.IsNullOrEmpty(oldSuffix) && oldFileName.EndsWith(oldSuffix))
+                {
+                    newFileName = oldFileName.Replace(oldSuffix, newSuffix); // REMINDER COMMENT: The string.Replace() function could be used to replace any part of the file name, not just the suffix
+                }
+                else
+                {
+                    newFileName = oldFileName + newSuffix;
+                }
+
+                newFileName = newFileName.Trim();
+                string newPath = Path.Combine(directory.FullName, newFileName + fileExtension);
+                file.MoveTo(newPath);
+            }
+
+            DirectoryInfo[] subDirectories = directory.GetDirectories();
+            foreach (DirectoryInfo subDirectory in subDirectories)
+            {
+                suffixProcessor(subDirectory, oldSuffix, newSuffix);
+            }
+        }
     }
 }

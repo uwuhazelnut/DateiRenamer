@@ -141,7 +141,8 @@ namespace DateiRenamer
 
             foreach (FileInfo file in files)
             {
-                string oldFileName = file.Name;
+                string oldFileName = Path.GetFileNameWithoutExtension(file.FullName);
+                string fileExtension = file.Extension;
                 string newFileName;
                 oldFileName = oldFileName.Trim();
 
@@ -155,7 +156,7 @@ namespace DateiRenamer
                 }
 
                 newFileName = newFileName.Trim();
-                string newPath = Path.Combine(directory.FullName, newFileName);
+                string newPath = Path.Combine(directory.FullName, newFileName + fileExtension);
                 file.MoveTo(newPath);
             }
 
