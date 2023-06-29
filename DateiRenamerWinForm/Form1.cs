@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace DateiRenamerWinForm
 {
@@ -184,6 +185,69 @@ namespace DateiRenamerWinForm
             {
                 suffixProcessor(subDirectory, oldSuffix, newSuffix);
             }
+        }
+
+        private void changeDigitsBtn_Click(object sender, EventArgs e)
+        {
+            digitsForm digitsForm = new digitsForm();
+            digitsForm.ShowDialog();
+
+            string userAction = digitsForm.userAction;
+            string directoryPath = folderPathTxt.Text;
+
+            switch (userAction)
+            {
+                case "moveDigits":
+                    int userOptionMoveDigits = digitsForm.userOption;
+                    moveDigitsProcessor(new DirectoryInfo(directoryPath), userOptionMoveDigits);
+                    break;
+            }
+
+            populateListBox(directoryPath);
+        }
+
+        private void moveDigitsProcessor(DirectoryInfo directory, int userOption)
+        {
+            FileInfo[] files = directory.GetFiles();
+
+            foreach (FileInfo file in files)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(file.FullName); // Get file name without extension to allow for moving string to the end without modifying the file extension
+                string fileExtension = Path.GetExtension(file.FullName);
+
+                if (containsDigitBlock(fileName))
+                {
+                    // Use regular expression to find the digit block:
+                    Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+                    string digitBlock = digitBlockMatch.Value;
+                    string remainingFileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length); // Removes the digit block from the file name using the Regex match information
+                    string newFileName = string.Empty; // An empty string is necessary to remove a compiler error when creating the new file path later on
+
+                    if (userOption == 0)
+                    {
+                        newFileName = digitBlock + remainingFileName; // Move digit block to beginning
+                    }
+                    else if (userOption == 1)
+                    {
+                        newFileName = remainingFileName + digitBlock; //Move digit block to end
+                    }
+
+                    string newPath = Path.Combine(directory.FullName, newFileName + fileExtension); // Reattach file extension to the file name
+                    file.MoveTo(newPath);
+                }
+            }
+
+            DirectoryInfo[] subDirectories = directory.GetDirectories();
+            foreach (DirectoryInfo subDirectory in subDirectories)
+            {
+                moveDigitsProcessor(subDirectory, userOption);
+            }
+        }
+
+        private bool containsDigitBlock(string fileName)
+        {
+            // Use regular expression to check if the filename contains a block of digits
+            return Regex.IsMatch(fileName, @"\d+");
         }
     }
 }

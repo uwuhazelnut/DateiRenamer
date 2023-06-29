@@ -38,6 +38,7 @@
             changePrefixBtn = new Button();
             filesListBoxLbl = new Label();
             changeSuffixBtn = new Button();
+            changeDigitsBtn = new Button();
             SuspendLayout();
             // 
             // filesListBox
@@ -132,11 +133,22 @@
             changeSuffixBtn.UseVisualStyleBackColor = true;
             changeSuffixBtn.Click += changeSuffixBtn_Click;
             // 
+            // changeDigitsBtn
+            // 
+            changeDigitsBtn.Location = new Point(863, 186);
+            changeDigitsBtn.Name = "changeDigitsBtn";
+            changeDigitsBtn.Size = new Size(134, 38);
+            changeDigitsBtn.TabIndex = 10;
+            changeDigitsBtn.Text = "Zahlen ändern";
+            changeDigitsBtn.UseVisualStyleBackColor = true;
+            changeDigitsBtn.Click += changeDigitsBtn_Click;
+            // 
             // dateiRenamerForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1422, 841);
+            Controls.Add(changeDigitsBtn);
             Controls.Add(changeSuffixBtn);
             Controls.Add(filesListBoxLbl);
             Controls.Add(changePrefixBtn);
@@ -164,5 +176,6 @@
         private Button changePrefixBtn;
         private Label filesListBoxLbl;
         private Button changeSuffixBtn;
+        private Button changeDigitsBtn;
     }
 }
