@@ -4,6 +4,11 @@ namespace DateiRenamer
 {
     internal class Methods
     {
+        /// <summary>
+        /// Gets option in a specified range of numbers from user input
+        /// </summary>
+        /// <param name="optionAmount">The amount of user options available</param>
+        /// <returns>Option selected by user as an int</returns>
         public static int getUserOption(int optionAmount)
         {
             int option; // The option chosen by the user is stored in the option variable
@@ -27,6 +32,7 @@ namespace DateiRenamer
         /// <summary>
         /// Returns a directory path from user input and lists all files in directory and subdirectories
         /// </summary>
+        /// <returns>Directory path from user input as a string</returns>
         public static string getDirectory()
         {
             Console.WriteLine("Bitte den Pfad zu dem Ordner angeben, in dem die Dateien umbenannt werden sollen:");
@@ -64,6 +70,10 @@ namespace DateiRenamer
             return directoryPath;
         }
 
+        /// <summary>
+        /// Lists all files from all subdirectories within a specified directory
+        /// </summary>
+        /// <param name="directory">Root directory, where all subdirectories should be processed</param>
         private static void subdirectoryProcessor(DirectoryInfo directory)
         {
             DirectoryInfo[] subDirectories = directory.GetDirectories(); // `DirectoryInfo` provides methods to work with directories
@@ -83,6 +93,10 @@ namespace DateiRenamer
             }
         }
 
+        /// <summary>
+        /// Gets new file name prefix from user input and calls the prefixProcessor() function for the actual file processing
+        /// </summary>
+        /// <param name="directoryPath">Directory, where file names should be changed</param>
         public static void changePrefix(string directoryPath)
         {
             Console.WriteLine("Präfix eingeben, der ersetzt werden soll (leer lassen wenn nur Präfix hinzugefügt werden soll):");
@@ -93,6 +107,12 @@ namespace DateiRenamer
             prefixProcessor(new DirectoryInfo(directoryPath), oldPrefix, newPrefix); // Processing the prefix changing in a separate function for recursion purposes. If we added recursion to this function, the user would have to enter new prefixes every single time
         }
 
+        /// <summary>
+        /// Replaces prefix with given prefix for all file names, or adds prefix if no prefix to replace is given in directory and sub-directories
+        /// </summary>
+        /// <param name="directory">Directory, where file names should be changed</param>
+        /// <param name="oldPrefix">Prefix to be replaced</param>
+        /// <param name="newPrefix">New prefix</param>
         private static void prefixProcessor(DirectoryInfo directory, string oldPrefix, string newPrefix)
         {
             FileInfo[] files = directory.GetFiles(); // `FileInfo[]` provides methods to work with files
@@ -125,6 +145,10 @@ namespace DateiRenamer
             }
         }
 
+        /// <summary>
+        /// Gets new file name suffix from user input and calls the suffixProcessor() function for the actual file processing
+        /// </summary>
+        /// <param name="directoryPath">Directory, where file names should be changed</param>
         public static void changeSuffix(string directoryPath)
         {
             Console.WriteLine("Suffix eingeben, der ersetzt werden soll (leer lassen wenn nur Suffix hinzugefügt werden soll):");
@@ -135,6 +159,12 @@ namespace DateiRenamer
             suffixProcessor(new DirectoryInfo(directoryPath), oldSuffix, newSuffix);
         }
 
+        /// <summary>
+        /// Replaces suffix with given suffix for all file names, or adds suffix if no suffix to replace is given in directory and sub-directories
+        /// </summary>
+        /// <param name="directory">Directory, where file names should be changed</param>
+        /// <param name="oldSuffix">Prefix to be replaced</param>
+        /// <param name="newSuffix">New prefix</param>
         private static void suffixProcessor(DirectoryInfo directory, string oldSuffix, string newSuffix)
         {
             FileInfo[] files = directory.GetFiles();
@@ -167,6 +197,10 @@ namespace DateiRenamer
             }
         }
 
+        /// <summary>
+        /// Asks user if the digit blocks should be moved to the start or the end of the file name and calls the moveDigitsProcessor() function for file processing
+        /// </summary>
+        /// <param name="directoryPath">Directory, where file names should be changed</param>
         public static void moveDigits(string directoryPath)
         {
             Console.WriteLine("Wohin sollen die Zahlenblöcke verschoben werden?");
@@ -179,6 +213,11 @@ namespace DateiRenamer
             Console.WriteLine("Zahlenblöcke verschoben (wenn vorhanden).");
         }
 
+        /// <summary>
+        /// Moves existing digit blocks in the file names to either the start or end of the file name, depending on the option given
+        /// </summary>
+        /// <param name="directory">Directory, where file names should be changed</param>
+        /// <param name="userOption">Option for where the digit block should be moved to</param>
         private static void moveDigitsProcessor(DirectoryInfo directory, int userOption)
         {
             FileInfo[] files = directory.GetFiles();
@@ -217,12 +256,21 @@ namespace DateiRenamer
             }
         }
 
+        /// <summary>
+        /// Checks, if a string contains a digit block using a regular expression and returns a bool value
+        /// </summary>
+        /// <param name="fileName">string to be checked for existing digit blocks</param>
+        /// <returns>bool true or false</returns>
         private static bool containsDigitBlock(string fileName)
         {
             // Use regular expression to check if the filename contains a block of digits
             return Regex.IsMatch(fileName, @"\d+");
         }
 
+        /// <summary>
+        /// Asks the user to choose from multiple options for editing the digit blocks of file names and calls the editDigitsProcessor() function for file processing
+        /// </summary>
+        /// <param name="directoryPath">Directory, where file names should be changed</param>
         public static void editDigits(string directoryPath)
         {
             Console.WriteLine("Was soll mit den Zahlen passieren?");
@@ -246,6 +294,11 @@ namespace DateiRenamer
             }
         }
 
+        /// <summary>
+        /// Either adds digit blocks to all file names or removes all digit blocks in the file names or adds leading zeros as padding to all file names, depending on option given
+        /// </summary>
+        /// <param name="directoryPath">Directory, where file names should be changed</param>
+        /// <param name="userOption">The option chosen by the user</param>
         private static void editDigitsProcessor(string directoryPath, int userOption)
         {
             string[] files = Directory.GetFiles(directoryPath);
@@ -329,6 +382,10 @@ namespace DateiRenamer
             }
         }
 
+        /// <summary>
+        /// Gets a pattern for all file names from the user and calls the namePatternProcessor() function for file processing
+        /// </summary>
+        /// <param name="directoryPath">Directory, where file names should be changed</param>
         public static void createNamePattern(string directoryPath)
         {
             Console.WriteLine("Muster eingeben, das für alle Dateien verwendet werden soll (alle Dateinamen werden mit diesem Muster ersetzt):");
@@ -346,6 +403,11 @@ namespace DateiRenamer
             }
         }
 
+        /// <summary>
+        /// Replaces all file names with pattern given and adds digits to prevent file name conflicts
+        /// </summary>
+        /// <param name="directoryPath">Directory, where file names should be changed</param>
+        /// <param name="userPattern">Pattern used for the file names</param>
         private static void namePatternProcessor(string directoryPath, string userPattern)
         {
             string[] filePaths = Directory.GetFiles(directoryPath);
