@@ -182,18 +182,28 @@ namespace DateiRenamerWinForm
             digitsForm digitsForm = new digitsForm();
             digitsForm.ShowDialog();
 
-            string userAction = digitsForm.userAction;
-            string directoryPath = folderPathTxt.Text;
-
-            switch (userAction)
+            if (!string.IsNullOrWhiteSpace(digitsForm.userAction))
             {
-                case "moveDigits":
-                    int userOptionMoveDigits = digitsForm.userOption;
-                    moveDigitsProcessor(new DirectoryInfo(directoryPath), userOptionMoveDigits);
-                    break;
-            }
+                try
+                {
+                    string userAction = digitsForm.userAction;
+                    string directoryPath = folderPathTxt.Text;
 
-            populateListBox(directoryPath);
+                    switch (userAction)
+                    {
+                        case "moveDigits":
+                            int userOptionMoveDigits = digitsForm.userOption;
+                            moveDigitsProcessor(new DirectoryInfo(directoryPath), userOptionMoveDigits);
+                            break;
+                    }
+
+                    populateListBox(directoryPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void moveDigitsProcessor(DirectoryInfo directory, int userOption)
