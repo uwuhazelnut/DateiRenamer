@@ -36,37 +36,41 @@
             // namePatternLbl
             // 
             namePatternLbl.AutoSize = true;
-            namePatternLbl.Location = new Point(12, 9);
+            namePatternLbl.Location = new Point(8, 5);
+            namePatternLbl.Margin = new Padding(2, 0, 2, 0);
             namePatternLbl.Name = "namePatternLbl";
-            namePatternLbl.Size = new Size(492, 75);
+            namePatternLbl.Size = new Size(326, 45);
             namePatternLbl.TabIndex = 0;
             namePatternLbl.Text = "Muster eingeben, das für alle Dateien verwendet werden soll \r\n(alle Dateinamen werden mit diesem Muster ersetzt)\r\nBeispiel: 'file-' führt zum Muster 'file-1', 'file-2', ...:";
             // 
             // namePatternTxt
             // 
-            namePatternTxt.Location = new Point(12, 92);
+            namePatternTxt.Location = new Point(8, 55);
+            namePatternTxt.Margin = new Padding(2, 2, 2, 2);
             namePatternTxt.Name = "namePatternTxt";
-            namePatternTxt.Size = new Size(428, 31);
+            namePatternTxt.Size = new Size(301, 23);
             namePatternTxt.TabIndex = 1;
             // 
             // namePatternFormOkBtn
             // 
             namePatternFormOkBtn.DialogResult = DialogResult.OK;
-            namePatternFormOkBtn.Location = new Point(654, 143);
+            namePatternFormOkBtn.Location = new Point(458, 86);
+            namePatternFormOkBtn.Margin = new Padding(2, 2, 2, 2);
             namePatternFormOkBtn.Name = "namePatternFormOkBtn";
-            namePatternFormOkBtn.Size = new Size(134, 38);
+            namePatternFormOkBtn.Size = new Size(94, 23);
             namePatternFormOkBtn.TabIndex = 5;
             namePatternFormOkBtn.Text = "OK";
             namePatternFormOkBtn.UseVisualStyleBackColor = true;
             // 
             // namePatternForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 193);
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(560, 116);
             Controls.Add(namePatternFormOkBtn);
             Controls.Add(namePatternTxt);
             Controls.Add(namePatternLbl);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "namePatternForm";
             Text = "namePatternForm";
             ResumeLayout(false);

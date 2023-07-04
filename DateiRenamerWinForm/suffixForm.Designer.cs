@@ -38,9 +38,10 @@
             // suffixFormOkBtn
             // 
             suffixFormOkBtn.DialogResult = DialogResult.OK;
-            suffixFormOkBtn.Location = new Point(683, 197);
+            suffixFormOkBtn.Location = new Point(478, 118);
+            suffixFormOkBtn.Margin = new Padding(2, 2, 2, 2);
             suffixFormOkBtn.Name = "suffixFormOkBtn";
-            suffixFormOkBtn.Size = new Size(134, 38);
+            suffixFormOkBtn.Size = new Size(94, 23);
             suffixFormOkBtn.TabIndex = 9;
             suffixFormOkBtn.Text = "OK";
             suffixFormOkBtn.UseVisualStyleBackColor = true;
@@ -48,45 +49,50 @@
             // newSuffixLbl
             // 
             newSuffixLbl.AutoSize = true;
-            newSuffixLbl.Location = new Point(29, 131);
+            newSuffixLbl.Location = new Point(20, 79);
+            newSuffixLbl.Margin = new Padding(2, 0, 2, 0);
             newSuffixLbl.Name = "newSuffixLbl";
-            newSuffixLbl.Size = new Size(562, 25);
+            newSuffixLbl.Size = new Size(376, 15);
             newSuffixLbl.TabIndex = 8;
             newSuffixLbl.Text = "Neuer Suffix (leer lassen wenn nur der alte Suffix gelöscht werden soll)";
             // 
             // oldSuffixLbl
             // 
             oldSuffixLbl.AutoSize = true;
-            oldSuffixLbl.Location = new Point(29, 42);
+            oldSuffixLbl.Location = new Point(20, 25);
+            oldSuffixLbl.Margin = new Padding(2, 0, 2, 0);
             oldSuffixLbl.Name = "oldSuffixLbl";
-            oldSuffixLbl.Size = new Size(661, 25);
+            oldSuffixLbl.Size = new Size(441, 15);
             oldSuffixLbl.TabIndex = 7;
             oldSuffixLbl.Text = "Suffix, der ersetzt werden soll (leer lassen wenn nur Suffix hinzugefügt werden soll)";
             // 
             // newSuffixTxt
             // 
-            newSuffixTxt.Location = new Point(29, 159);
+            newSuffixTxt.Location = new Point(20, 95);
+            newSuffixTxt.Margin = new Padding(2, 2, 2, 2);
             newSuffixTxt.Name = "newSuffixTxt";
-            newSuffixTxt.Size = new Size(529, 31);
+            newSuffixTxt.Size = new Size(372, 23);
             newSuffixTxt.TabIndex = 6;
             // 
             // oldSuffixTxt
             // 
-            oldSuffixTxt.Location = new Point(29, 70);
+            oldSuffixTxt.Location = new Point(20, 42);
+            oldSuffixTxt.Margin = new Padding(2, 2, 2, 2);
             oldSuffixTxt.Name = "oldSuffixTxt";
-            oldSuffixTxt.Size = new Size(529, 31);
+            oldSuffixTxt.Size = new Size(372, 23);
             oldSuffixTxt.TabIndex = 5;
             // 
             // suffixForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(829, 247);
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(580, 148);
             Controls.Add(suffixFormOkBtn);
             Controls.Add(newSuffixLbl);
             Controls.Add(oldSuffixLbl);
             Controls.Add(newSuffixTxt);
             Controls.Add(oldSuffixTxt);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "suffixForm";
             Text = "suffixForm";
             ResumeLayout(false);

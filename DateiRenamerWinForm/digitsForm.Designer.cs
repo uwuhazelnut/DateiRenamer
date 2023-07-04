@@ -36,17 +36,19 @@
             // moveDigitsLbl
             // 
             moveDigitsLbl.AutoSize = true;
-            moveDigitsLbl.Location = new Point(12, 9);
+            moveDigitsLbl.Location = new Point(8, 5);
+            moveDigitsLbl.Margin = new Padding(2, 0, 2, 0);
             moveDigitsLbl.Name = "moveDigitsLbl";
-            moveDigitsLbl.Size = new Size(209, 25);
+            moveDigitsLbl.Size = new Size(141, 15);
             moveDigitsLbl.TabIndex = 0;
             moveDigitsLbl.Text = "Zahlenblock verschieben:";
             // 
             // moveDigitsStartBtn
             // 
-            moveDigitsStartBtn.Location = new Point(12, 37);
+            moveDigitsStartBtn.Location = new Point(8, 22);
+            moveDigitsStartBtn.Margin = new Padding(2, 2, 2, 2);
             moveDigitsStartBtn.Name = "moveDigitsStartBtn";
-            moveDigitsStartBtn.Size = new Size(171, 38);
+            moveDigitsStartBtn.Size = new Size(120, 23);
             moveDigitsStartBtn.TabIndex = 8;
             moveDigitsStartBtn.Text = "an den Anfang";
             moveDigitsStartBtn.UseVisualStyleBackColor = true;
@@ -54,9 +56,10 @@
             // 
             // moveDigitsEndBtn
             // 
-            moveDigitsEndBtn.Location = new Point(189, 37);
+            moveDigitsEndBtn.Location = new Point(132, 22);
+            moveDigitsEndBtn.Margin = new Padding(2, 2, 2, 2);
             moveDigitsEndBtn.Name = "moveDigitsEndBtn";
-            moveDigitsEndBtn.Size = new Size(171, 38);
+            moveDigitsEndBtn.Size = new Size(120, 23);
             moveDigitsEndBtn.TabIndex = 9;
             moveDigitsEndBtn.Text = "an das Ende";
             moveDigitsEndBtn.UseVisualStyleBackColor = true;
@@ -64,12 +67,13 @@
             // 
             // digitsForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(560, 270);
             Controls.Add(moveDigitsEndBtn);
             Controls.Add(moveDigitsStartBtn);
             Controls.Add(moveDigitsLbl);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "digitsForm";
             Text = "digitsForm";
             ResumeLayout(false);

@@ -44,10 +44,11 @@
             // 
             filesListBox.FormattingEnabled = true;
             filesListBox.HorizontalScrollbar = true;
-            filesListBox.ItemHeight = 25;
-            filesListBox.Location = new Point(12, 37);
+            filesListBox.ItemHeight = 15;
+            filesListBox.Location = new Point(8, 22);
+            filesListBox.Margin = new Padding(2, 2, 2, 2);
             filesListBox.Name = "filesListBox";
-            filesListBox.Size = new Size(544, 779);
+            filesListBox.Size = new Size(382, 469);
             filesListBox.TabIndex = 1;
             filesListBox.SelectedIndexChanged += filesListBox_SelectedIndexChanged;
             // 
@@ -58,9 +59,10 @@
             // fileDialogBtn
             // 
             fileDialogBtn.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            fileDialogBtn.Location = new Point(982, 39);
+            fileDialogBtn.Location = new Point(687, 23);
+            fileDialogBtn.Margin = new Padding(2, 2, 2, 2);
             fileDialogBtn.Name = "fileDialogBtn";
-            fileDialogBtn.Size = new Size(32, 32);
+            fileDialogBtn.Size = new Size(22, 19);
             fileDialogBtn.TabIndex = 4;
             fileDialogBtn.Text = "…";
             fileDialogBtn.UseVisualStyleBackColor = true;
@@ -68,26 +70,29 @@
             // 
             // folderPathTxt
             // 
-            folderPathTxt.Location = new Point(605, 40);
+            folderPathTxt.Location = new Point(424, 24);
+            folderPathTxt.Margin = new Padding(2, 2, 2, 2);
             folderPathTxt.Name = "folderPathTxt";
             folderPathTxt.ReadOnly = true;
-            folderPathTxt.Size = new Size(371, 31);
+            folderPathTxt.Size = new Size(261, 23);
             folderPathTxt.TabIndex = 5;
             // 
             // filePathLbl
             // 
             filePathLbl.AutoSize = true;
-            filePathLbl.Location = new Point(605, 12);
+            filePathLbl.Location = new Point(424, 7);
+            filePathLbl.Margin = new Padding(2, 0, 2, 0);
             filePathLbl.Name = "filePathLbl";
-            filePathLbl.Size = new Size(321, 25);
+            filePathLbl.Size = new Size(214, 15);
             filePathLbl.TabIndex = 6;
             filePathLbl.Text = "Dateipfad (über den Button auswählen)";
             // 
             // changePrefixBtn
             // 
-            changePrefixBtn.Location = new Point(605, 77);
+            changePrefixBtn.Location = new Point(424, 51);
+            changePrefixBtn.Margin = new Padding(2, 2, 2, 2);
             changePrefixBtn.Name = "changePrefixBtn";
-            changePrefixBtn.Size = new Size(209, 38);
+            changePrefixBtn.Size = new Size(146, 23);
             changePrefixBtn.TabIndex = 7;
             changePrefixBtn.Text = "Präfix ändern";
             changePrefixBtn.UseVisualStyleBackColor = true;
@@ -96,17 +101,19 @@
             // filesListBoxLbl
             // 
             filesListBoxLbl.AutoSize = true;
-            filesListBoxLbl.Location = new Point(12, 9);
+            filesListBoxLbl.Location = new Point(8, 5);
+            filesListBoxLbl.Margin = new Padding(2, 0, 2, 0);
             filesListBoxLbl.Name = "filesListBoxLbl";
-            filesListBoxLbl.Size = new Size(76, 25);
+            filesListBoxLbl.Size = new Size(50, 15);
             filesListBoxLbl.TabIndex = 8;
             filesListBoxLbl.Text = "Dateien:";
             // 
             // changeSuffixBtn
             // 
-            changeSuffixBtn.Location = new Point(605, 121);
+            changeSuffixBtn.Location = new Point(424, 78);
+            changeSuffixBtn.Margin = new Padding(2, 2, 2, 2);
             changeSuffixBtn.Name = "changeSuffixBtn";
-            changeSuffixBtn.Size = new Size(209, 38);
+            changeSuffixBtn.Size = new Size(146, 23);
             changeSuffixBtn.TabIndex = 9;
             changeSuffixBtn.Text = "Suffix ändern";
             changeSuffixBtn.UseVisualStyleBackColor = true;
@@ -114,9 +121,10 @@
             // 
             // changeDigitsBtn
             // 
-            changeDigitsBtn.Location = new Point(605, 165);
+            changeDigitsBtn.Location = new Point(424, 104);
+            changeDigitsBtn.Margin = new Padding(2, 2, 2, 2);
             changeDigitsBtn.Name = "changeDigitsBtn";
-            changeDigitsBtn.Size = new Size(209, 38);
+            changeDigitsBtn.Size = new Size(146, 23);
             changeDigitsBtn.TabIndex = 10;
             changeDigitsBtn.Text = "Zahlen ändern";
             changeDigitsBtn.UseVisualStyleBackColor = true;
@@ -124,9 +132,10 @@
             // 
             // namePatternBtn
             // 
-            namePatternBtn.Location = new Point(605, 209);
+            namePatternBtn.Location = new Point(424, 130);
+            namePatternBtn.Margin = new Padding(2, 2, 2, 2);
             namePatternBtn.Name = "namePatternBtn";
-            namePatternBtn.Size = new Size(209, 38);
+            namePatternBtn.Size = new Size(146, 23);
             namePatternBtn.TabIndex = 11;
             namePatternBtn.Text = "Musternamen erstellen";
             namePatternBtn.UseVisualStyleBackColor = true;
@@ -134,9 +143,9 @@
             // 
             // dateiRenamerForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1422, 841);
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            ClientSize = new Size(995, 505);
             Controls.Add(namePatternBtn);
             Controls.Add(changeDigitsBtn);
             Controls.Add(changeSuffixBtn);
@@ -146,6 +155,7 @@
             Controls.Add(folderPathTxt);
             Controls.Add(fileDialogBtn);
             Controls.Add(filesListBox);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "dateiRenamerForm";
             Text = "DateiRenamer";
             ResumeLayout(false);
