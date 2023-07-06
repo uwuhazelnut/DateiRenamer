@@ -39,14 +39,12 @@ namespace DateiRenamer
 
             // Get directory path from user input:
             string directoryPath = Console.ReadLine()!; // The `!` removes the "can be null" warning
-            Boolean validityCheck = false;
 
             // Get new user input if previous input was invalid:
-            while (validityCheck == false)
+            while (true)
             {
                 if (System.IO.Directory.Exists(directoryPath)) // Check if path exists
                 {
-                    validityCheck = true; // Stop the loop because user input is valid
                     Console.WriteLine($"Pfad existiert");
                     Console.WriteLine($"Dateien in Pfad {directoryPath}:");
 
@@ -59,6 +57,7 @@ namespace DateiRenamer
                     //Recursively process subdirectories:
                     Console.WriteLine($"Unterordner in Pfad {directoryPath}:");
                     subdirectoryProcessor(new DirectoryInfo(directoryPath));
+                    break;
                 }
                 else
                 {
