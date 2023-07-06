@@ -57,7 +57,7 @@ namespace DateiRenamer
                     //Recursively process subdirectories:
                     Console.WriteLine($"Unterordner in Pfad {directoryPath}:");
                     subdirectoryProcessor(new DirectoryInfo(directoryPath));
-                    break;
+                    break; // End loop because user input is valid
                 }
                 else
                 {
