@@ -42,5 +42,26 @@ namespace DateiRenamerWinForm
             userOption = 1;
             this.Close();
         }
+
+        private void addDigitsBtn_Click(object sender, EventArgs e)
+        {
+            userAction = "addDelDigitsAddLeadingZeros";
+            userOption = 0;
+            this.Close();
+        }
+
+        private void delDigitsLbl_Click(object sender, EventArgs e)
+        {
+            userAction = "addDelDigitsAddLeadingZeros";
+            userOption = 1;
+            this.Close();
+        }
+
+        private void addLeadingZerosBtn_Click(object sender, EventArgs e)
+        {
+            userAction = "addDelDigitsAddLeadingZeros";
+            userOption = 2;
+            this.Close();
+        }
     }
 }

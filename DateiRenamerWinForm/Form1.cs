@@ -195,6 +195,10 @@ namespace DateiRenamerWinForm
                             int userOptionMoveDigits = digitsForm.userOption;
                             moveDigitsProcessor(new DirectoryInfo(directoryPath), userOptionMoveDigits);
                             break;
+                        case "addDelDigitsAddLeadingZeros":
+                            int userOptionAddDelDigitsAddLeadingZeros = digitsForm.userOption;
+                            editDigitsProcessor(directoryPath, userOptionAddDelDigitsAddLeadingZeros);
+                            break;
                     }
 
                     populateListBox(directoryPath);
@@ -289,6 +293,103 @@ namespace DateiRenamerWinForm
             foreach (string subDirectory in subdirectoryPaths)
             {
                 namePatternProcessor(subDirectory, userPattern);
+            }
+        }
+
+        private void editDigitsProcessor(string directoryPath, int userOption)
+        {
+            string[] files = Directory.GetFiles(directoryPath);
+
+            switch (userOption)
+            {
+                case 0:
+                    //Sort the files depending on file creation time in ascending order (a lambda expression is used to properly sort the elements): 
+                    Array.Sort(files, (a, b) => File.GetCreationTime(a).CompareTo(File.GetCreationTime(b)));
+
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        string filePath = files[i];
+                        string fileName = Path.GetFileNameWithoutExtension(filePath);
+                        string fileExtension = Path.GetExtension(filePath);
+
+                        // Remove digit block from file name if it contains a digit block:
+                        if (containsDigitBlock(fileName))
+                        {
+                            Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+                            fileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length);
+                        }
+
+                        string newFileName = $"{fileName}{i + 1}"; // Adding the digit to each file name
+                        string newPath = Path.Combine(directoryPath, newFileName + fileExtension);
+                        File.Move(filePath, newPath);
+                    }
+                    break;
+                case 1:
+                    foreach (string filePath in files)
+                    {
+                        string fileName = Path.GetFileName(filePath);
+
+                        if (containsDigitBlock(fileName))
+                        {
+                            Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+                            string newFileName = fileName.Remove(digitBlockMatch.Index, digitBlockMatch.Length);
+                            string newPath = Path.Combine(directoryPath, newFileName);
+
+                            // Check if removing the digit block caused a conflict with already existing file names:
+                            if (!File.Exists(newPath))
+                            {
+                                File.Move(filePath, newPath);
+                            }
+                            else
+                            {
+                                /***************************************       CHANGE THIS        **********************+*********************
+                                Console.WriteLine($"Datei {filePath} wurde übersprungen, da Konflikt mit bereits vorhandener Datei besteht.");
+                                *************************************************************************************************************/
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    int longestDigitBlockLength = 0;
+
+                    // Find the longest digit block in file names:
+                    foreach (string filePath in files)
+                    {
+                        string fileName = Path.GetFileName(filePath);
+
+                        if (containsDigitBlock(fileName))
+                        {
+                            Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+
+                            // Get the length of the largest digit block by comparing each digit block to the current largest block:
+                            longestDigitBlockLength = Math.Max(digitBlockMatch.Value.Length, longestDigitBlockLength);
+                        }
+                    }
+
+                    // Apply padding:
+                    foreach (string filePath in files)
+                    {
+                        string fileName = Path.GetFileName(filePath);
+
+                        if (containsDigitBlock(fileName))
+                        {
+                            Match digitBlockMatch = Regex.Match(fileName, @"\d+");
+
+                            // Create new digit block with leading zeros and replace old digit block:
+                            string paddedDigitBlock = digitBlockMatch.Value.PadLeft(longestDigitBlockLength, '0');
+                            string newFileName = fileName.Replace(digitBlockMatch.Value, paddedDigitBlock);
+
+                            string newPath = Path.Combine(directoryPath, newFileName);
+                            File.Move(filePath, newPath);
+                        }
+                    }
+                    break;
+            }
+
+            string[] subDirectoryPaths = Directory.GetDirectories(directoryPath);
+            foreach (string subDirectory in subDirectoryPaths)
+            {
+                editDigitsProcessor(subDirectory, userOption);
             }
         }
     }

@@ -352,6 +352,7 @@ namespace DateiRenamer
                 case 2:
                     int longestDigitBlockLength = 0;
 
+                    // Find the longest digit block in file names:
                     foreach (string filePath in files)
                     {
                         string fileName = Path.GetFileName(filePath);
@@ -362,6 +363,17 @@ namespace DateiRenamer
 
                             // Get the length of the largest digit block by comparing each digit block to the current largest block:
                             longestDigitBlockLength = Math.Max(digitBlockMatch.Value.Length, longestDigitBlockLength);
+                        }
+                    }
+
+                    // Apply padding:
+                    foreach (string filePath in files)
+                    {
+                        string fileName = Path.GetFileName(filePath);
+
+                        if (containsDigitBlock(fileName))
+                        {
+                            Match digitBlockMatch = Regex.Match(fileName, @"\d+");
 
                             // Create new digit block with leading zeros and replace old digit block:
                             string paddedDigitBlock = digitBlockMatch.Value.PadLeft(longestDigitBlockLength, '0');

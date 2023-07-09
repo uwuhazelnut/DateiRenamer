@@ -46,7 +46,7 @@
             filesListBox.HorizontalScrollbar = true;
             filesListBox.ItemHeight = 15;
             filesListBox.Location = new Point(8, 22);
-            filesListBox.Margin = new Padding(2, 2, 2, 2);
+            filesListBox.Margin = new Padding(2);
             filesListBox.Name = "filesListBox";
             filesListBox.Size = new Size(382, 469);
             filesListBox.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             fileDialogBtn.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             fileDialogBtn.Location = new Point(687, 23);
-            fileDialogBtn.Margin = new Padding(2, 2, 2, 2);
+            fileDialogBtn.Margin = new Padding(2);
             fileDialogBtn.Name = "fileDialogBtn";
             fileDialogBtn.Size = new Size(22, 19);
             fileDialogBtn.TabIndex = 4;
@@ -71,7 +71,7 @@
             // folderPathTxt
             // 
             folderPathTxt.Location = new Point(424, 24);
-            folderPathTxt.Margin = new Padding(2, 2, 2, 2);
+            folderPathTxt.Margin = new Padding(2);
             folderPathTxt.Name = "folderPathTxt";
             folderPathTxt.ReadOnly = true;
             folderPathTxt.Size = new Size(261, 23);
@@ -90,7 +90,7 @@
             // changePrefixBtn
             // 
             changePrefixBtn.Location = new Point(424, 51);
-            changePrefixBtn.Margin = new Padding(2, 2, 2, 2);
+            changePrefixBtn.Margin = new Padding(2);
             changePrefixBtn.Name = "changePrefixBtn";
             changePrefixBtn.Size = new Size(146, 23);
             changePrefixBtn.TabIndex = 7;
@@ -111,7 +111,7 @@
             // changeSuffixBtn
             // 
             changeSuffixBtn.Location = new Point(424, 78);
-            changeSuffixBtn.Margin = new Padding(2, 2, 2, 2);
+            changeSuffixBtn.Margin = new Padding(2);
             changeSuffixBtn.Name = "changeSuffixBtn";
             changeSuffixBtn.Size = new Size(146, 23);
             changeSuffixBtn.TabIndex = 9;
@@ -122,7 +122,7 @@
             // changeDigitsBtn
             // 
             changeDigitsBtn.Location = new Point(424, 104);
-            changeDigitsBtn.Margin = new Padding(2, 2, 2, 2);
+            changeDigitsBtn.Margin = new Padding(2);
             changeDigitsBtn.Name = "changeDigitsBtn";
             changeDigitsBtn.Size = new Size(146, 23);
             changeDigitsBtn.TabIndex = 10;
@@ -133,7 +133,7 @@
             // namePatternBtn
             // 
             namePatternBtn.Location = new Point(424, 130);
-            namePatternBtn.Margin = new Padding(2, 2, 2, 2);
+            namePatternBtn.Margin = new Padding(2);
             namePatternBtn.Name = "namePatternBtn";
             namePatternBtn.Size = new Size(146, 23);
             namePatternBtn.TabIndex = 11;
@@ -155,9 +155,9 @@
             Controls.Add(folderPathTxt);
             Controls.Add(fileDialogBtn);
             Controls.Add(filesListBox);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "dateiRenamerForm";
-            Text = "DateiRenamer";
+            Text = "##";
             ResumeLayout(false);
             PerformLayout();
         }
