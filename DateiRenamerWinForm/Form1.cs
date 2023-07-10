@@ -325,6 +325,10 @@ namespace DateiRenamerWinForm
                     }
                     break;
                 case 1:
+                    // Create form to list all conflicting file names and list to store all conflicting file names:
+                    removeDigitsConflictForm removeDigitsConflictForm = new removeDigitsConflictForm();
+                    List<string> conflictingFileNames = new List<string>();
+
                     foreach (string filePath in files)
                     {
                         string fileName = Path.GetFileName(filePath);
@@ -342,12 +346,20 @@ namespace DateiRenamerWinForm
                             }
                             else
                             {
-                                /***************************************       CHANGE THIS        **********************+*********************
-                                Console.WriteLine($"Datei {filePath} wurde übersprungen, da Konflikt mit bereits vorhandener Datei besteht.");
-                                *************************************************************************************************************/
+                                conflictingFileNames.Add(filePath);
                             }
                         }
                     }
+
+                    // Add all conflicting items to listbox in removeDigitsConflictForm and display it as a dialog:
+                    removeDigitsConflictForm.clearListBox();
+                    foreach (string conflictingFileName in conflictingFileNames)
+                    {
+                        removeDigitsConflictForm.addItemToListBox(conflictingFileName);
+                    }
+                    removeDigitsConflictForm.ShowDialog();
+                    // NOTE FOR ABOVE CODE: A new dialog box will be shown for each sub-directory, as I didn't know how to get around this issue.
+
                     break;
                 case 2:
                     int longestDigitBlockLength = 0;

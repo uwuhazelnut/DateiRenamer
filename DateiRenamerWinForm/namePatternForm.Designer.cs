@@ -46,7 +46,7 @@
             // namePatternTxt
             // 
             namePatternTxt.Location = new Point(8, 55);
-            namePatternTxt.Margin = new Padding(2, 2, 2, 2);
+            namePatternTxt.Margin = new Padding(2);
             namePatternTxt.Name = "namePatternTxt";
             namePatternTxt.Size = new Size(301, 23);
             namePatternTxt.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             namePatternFormOkBtn.DialogResult = DialogResult.OK;
             namePatternFormOkBtn.Location = new Point(458, 86);
-            namePatternFormOkBtn.Margin = new Padding(2, 2, 2, 2);
+            namePatternFormOkBtn.Margin = new Padding(2);
             namePatternFormOkBtn.Name = "namePatternFormOkBtn";
             namePatternFormOkBtn.Size = new Size(94, 23);
             namePatternFormOkBtn.TabIndex = 5;
@@ -70,7 +70,7 @@
             Controls.Add(namePatternFormOkBtn);
             Controls.Add(namePatternTxt);
             Controls.Add(namePatternLbl);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "namePatternForm";
             Text = "namePatternForm";
             ResumeLayout(false);
