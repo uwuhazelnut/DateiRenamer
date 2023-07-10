@@ -39,7 +39,7 @@
             // 
             suffixFormOkBtn.DialogResult = DialogResult.OK;
             suffixFormOkBtn.Location = new Point(478, 118);
-            suffixFormOkBtn.Margin = new Padding(2, 2, 2, 2);
+            suffixFormOkBtn.Margin = new Padding(2);
             suffixFormOkBtn.Name = "suffixFormOkBtn";
             suffixFormOkBtn.Size = new Size(94, 23);
             suffixFormOkBtn.TabIndex = 9;
@@ -69,7 +69,7 @@
             // newSuffixTxt
             // 
             newSuffixTxt.Location = new Point(20, 95);
-            newSuffixTxt.Margin = new Padding(2, 2, 2, 2);
+            newSuffixTxt.Margin = new Padding(2);
             newSuffixTxt.Name = "newSuffixTxt";
             newSuffixTxt.Size = new Size(372, 23);
             newSuffixTxt.TabIndex = 6;
@@ -77,7 +77,7 @@
             // oldSuffixTxt
             // 
             oldSuffixTxt.Location = new Point(20, 42);
-            oldSuffixTxt.Margin = new Padding(2, 2, 2, 2);
+            oldSuffixTxt.Margin = new Padding(2);
             oldSuffixTxt.Name = "oldSuffixTxt";
             oldSuffixTxt.Size = new Size(372, 23);
             oldSuffixTxt.TabIndex = 5;
@@ -92,9 +92,9 @@
             Controls.Add(oldSuffixLbl);
             Controls.Add(newSuffixTxt);
             Controls.Add(oldSuffixTxt);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "suffixForm";
-            Text = "suffixForm";
+            Text = "Suffix ändern";
             ResumeLayout(false);
             PerformLayout();
         }

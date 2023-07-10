@@ -72,7 +72,7 @@
             Controls.Add(removeDigitsConlictFormOkBtn);
             Controls.Add(conflictFilesListBox);
             Name = "removeDigitsConflictForm";
-            Text = "removeDigitsConflictForm";
+            Text = "Konflikte in Dateinamen";
             ResumeLayout(false);
             PerformLayout();
         }

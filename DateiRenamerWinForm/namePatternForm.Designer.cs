@@ -72,7 +72,7 @@
             Controls.Add(namePatternLbl);
             Margin = new Padding(2);
             Name = "namePatternForm";
-            Text = "namePatternForm";
+            Text = "Musternamen erstellen";
             ResumeLayout(false);
             PerformLayout();
         }

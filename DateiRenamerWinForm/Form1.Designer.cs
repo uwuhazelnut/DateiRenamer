@@ -157,7 +157,7 @@
             Controls.Add(filesListBox);
             Margin = new Padding(2);
             Name = "dateiRenamerForm";
-            Text = "##";
+            Text = "DateiRenamer";
             ResumeLayout(false);
             PerformLayout();
         }

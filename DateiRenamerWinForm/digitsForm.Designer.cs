@@ -136,7 +136,7 @@
             Controls.Add(moveDigitsLbl);
             Margin = new Padding(2);
             Name = "digitsForm";
-            Text = "digitsForm";
+            Text = "Zahlen anpassen";
             ResumeLayout(false);
             PerformLayout();
         }

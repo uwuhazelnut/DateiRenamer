@@ -38,7 +38,7 @@
             // oldPrefixTxt
             // 
             oldPrefixTxt.Location = new Point(20, 42);
-            oldPrefixTxt.Margin = new Padding(2, 2, 2, 2);
+            oldPrefixTxt.Margin = new Padding(2);
             oldPrefixTxt.Name = "oldPrefixTxt";
             oldPrefixTxt.Size = new Size(372, 23);
             oldPrefixTxt.TabIndex = 0;
@@ -46,7 +46,7 @@
             // newPrefixTxt
             // 
             newPrefixTxt.Location = new Point(20, 95);
-            newPrefixTxt.Margin = new Padding(2, 2, 2, 2);
+            newPrefixTxt.Margin = new Padding(2);
             newPrefixTxt.Name = "newPrefixTxt";
             newPrefixTxt.Size = new Size(372, 23);
             newPrefixTxt.TabIndex = 1;
@@ -75,7 +75,7 @@
             // 
             prefixFormOkBtn.DialogResult = DialogResult.OK;
             prefixFormOkBtn.Location = new Point(478, 118);
-            prefixFormOkBtn.Margin = new Padding(2, 2, 2, 2);
+            prefixFormOkBtn.Margin = new Padding(2);
             prefixFormOkBtn.Name = "prefixFormOkBtn";
             prefixFormOkBtn.Size = new Size(94, 23);
             prefixFormOkBtn.TabIndex = 4;
@@ -92,9 +92,9 @@
             Controls.Add(oldPrefixLbl);
             Controls.Add(newPrefixTxt);
             Controls.Add(oldPrefixTxt);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "prefixForm";
-            Text = "prefixForm";
+            Text = "Präfix ändern";
             ResumeLayout(false);
             PerformLayout();
         }
