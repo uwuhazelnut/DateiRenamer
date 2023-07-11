@@ -125,7 +125,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(560, 270);
+            ClientSize = new Size(286, 215);
             Controls.Add(addLeadingZerosLbl);
             Controls.Add(addLeadingZerosBtn);
             Controls.Add(delDigitsBtn);

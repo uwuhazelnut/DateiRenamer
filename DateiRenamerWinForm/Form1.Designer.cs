@@ -59,7 +59,7 @@
             // fileDialogBtn
             // 
             fileDialogBtn.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            fileDialogBtn.Location = new Point(687, 23);
+            fileDialogBtn.Location = new Point(723, 22);
             fileDialogBtn.Margin = new Padding(2);
             fileDialogBtn.Name = "fileDialogBtn";
             fileDialogBtn.Size = new Size(22, 19);
@@ -74,7 +74,7 @@
             folderPathTxt.Margin = new Padding(2);
             folderPathTxt.Name = "folderPathTxt";
             folderPathTxt.ReadOnly = true;
-            folderPathTxt.Size = new Size(261, 23);
+            folderPathTxt.Size = new Size(295, 23);
             folderPathTxt.TabIndex = 5;
             // 
             // filePathLbl
@@ -145,7 +145,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(995, 505);
+            ClientSize = new Size(823, 505);
             Controls.Add(namePatternBtn);
             Controls.Add(changeDigitsBtn);
             Controls.Add(changeSuffixBtn);
